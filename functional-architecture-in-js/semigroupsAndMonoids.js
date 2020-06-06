@@ -1,3 +1,5 @@
+const { List } = require("immutable-ext");
+
 // Basic semigroup
 const sum = x => ({
     x,
@@ -51,8 +53,9 @@ res = [true, false, true]
     .reduce((acc, n) => acc.concat(n), all.empty());
 console.log(res); // all(false)
 
-// What we just did is equivalent to a foldMap. See library "immutable-ext"
-// res = List([true, false]).foldMap(all, all.empty())
+// What we just did is equivalent to a foldMap in immutable-ext
+res = List([true, false]).foldMap(all, all.empty());
+console.log(res); // all(false)
 
 // Now lets checkout functors
 // Id functor

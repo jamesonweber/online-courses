@@ -1,3 +1,6 @@
+// Note, this was run on codepen.io and will not run locally
+// https://codepen.io/drboolean/pen/MpKpee?editors=0010
+
 const List = Immutable.List;
 const Map = Immutable.Map;
 
