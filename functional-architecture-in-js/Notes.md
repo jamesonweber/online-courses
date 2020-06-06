@@ -24,6 +24,8 @@ Note: when a function is closed and associative, it is parallel (IE it can be br
 
 #### Creating semigroup data
 
+A Semigroup is an algebraic structure that has a set and a binary operation that takes two elements in the set and returns a Semigroup that has an associative operation.
+
 const sum = x => ({
     x,
     concat: other =>
@@ -32,18 +34,24 @@ const sum = x => ({
 
 sum(3).concat(sum(5)) // sum(8)
 
+See semigroupsAndMonoids.js for more definitions
+
+#### Monoid
+A monoid is a semigroup with an identity.
+
+An identity is the base element `i` of a semigroup `s` such that when applied to any other element `x` of `s`; `i`.concat(`s(x)`) == `s(x)`.
+
 const product = x => ({
     x,
-    concat: other =>
-        product(x * other.x)
-})
+    concat: other => product(x * other.x)
+});
+product.empty = () => product(1);
 
-product(3).concat(product(5)) // product(15)
+If we wanted to do the entity for sum...
+sum.empty = () => sum(0);
 
-const any = x => ({
-    x,
-    concat: other =>
-        any(x || other.x)
-})
+##### Intersection
+Intersection is a semigroup since we can create concat for it, but it is not a monoid since we cannot create an empty (identity) for it. For example if we applied the empty set to another set, it would result in the empty set.
 
-any(false).concat(any(true)) // any(true)
+### Functors
+Functors are generic types which map from on category to another
