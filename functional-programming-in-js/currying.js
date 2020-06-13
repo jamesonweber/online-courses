@@ -1,3 +1,5 @@
+const { curry } = require("ramda");
+
 // Examples of modifying inputs to pass into the add function
 const add = (x, y) => x + y;
 
@@ -17,7 +19,7 @@ result = flip(add)(1, 4);
 console.log(result);
 
 // Currying
-const curry = f => x => y => f(x, y);
+// const curry = f => x => y => f(x, y);
 
 const curriedAdd = curry(add);
 
