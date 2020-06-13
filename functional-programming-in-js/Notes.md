@@ -52,4 +52,23 @@ Some things which make functions not "functions"
 - Properties / contract
   - Makes everything more mathematical
 
+### Currying
 
+#### Associative
+add(add(x, y), z) == add(x, add(y, z))
+
+#### Communative
+add(x, y) == add (y, x)
+
+#### Identity
+add(x, 0) == x
+
+#### Distributive
+add(mul(x, y), mul(x, z)) == mul(x, add(y, z))
+
+Currying is the evaluation of a function that takes multiple arguments and transforming it to evaluate in a sequence of functions which each take one argument.
+
+When:
+You choose currying when you want to remember an argument. For example a configuration you want tp pass around.
+
+Note: You want to keep the arguments you want to remember in the front
