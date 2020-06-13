@@ -19,6 +19,7 @@ result = flip(add)(1, 4);
 console.log(result);
 
 // Currying
+// Note ramda will curry for functions of any length. This one does two
 // const curry = f => x => y => f(x, y);
 
 const curriedAdd = curry(add);
@@ -42,4 +43,13 @@ const filter = curry((f, xs) => xs.filter(f));
 const getOdds = filter(isOdd);
 
 result = getOdds([1, 2, 3, 4, 5]);
+console.log(result);
+
+const replace = curry((regex, replacement, str) =>
+    str.replace(regex, replacement)
+);
+
+const replaceVowels = replace(/[AEIOU]/gi, "!");
+
+result = replaceVowels("Hey I have words");
 console.log(result);
