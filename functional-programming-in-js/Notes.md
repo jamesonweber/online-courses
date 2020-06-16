@@ -72,3 +72,11 @@ When:
 You choose currying when you want to remember an argument. For example a configuration you want tp pass around.
 
 Note: You want to keep the arguments you want to remember in the front
+
+### Composition
+
+Composing is associative (meaning we can move the parentheses around). And we will evaluate right to left in order of the passed in functions.
+
+Note: For left to right evaluation, look into `pipe`. It will do `(f, g) => x => g(f(x))`
+
+The goal is to create pipelines where we pass in an input and there are functions applied to it into a pipeline of data processing.
