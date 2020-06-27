@@ -140,10 +140,12 @@ const startApp_ = cfg => {
 const startApp = cfg =>
     Right(cfg)
         .map(cfg => parseDbUrl(cfg)) // if we didn't fold in parseDbUrl, this could be chain
+        .map(logIt) // Add logging to show the value we are working with
         .chain(parsed => fromNullable(parsed))
         .map(
             ([_, user, password, db]) => `starting ${db}, ${user}, ${password}`
         )
+        .map(logIt)
         .fold(
             () => "can't get config",
             x => x

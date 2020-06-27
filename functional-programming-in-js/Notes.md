@@ -85,3 +85,4 @@ The goal is to create pipelines where we pass in an input and there are function
 See functors.js for notes with examples on the identity functor.
 
 ### Either Monad
+See eitherMonad for notes with examples.
