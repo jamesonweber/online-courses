@@ -51,3 +51,41 @@ const findColorWithNullable = name => {
 
 result = findColorWithNullable("redd");
 console.log(result); // Left(not found)
+
+// Refactoring using Either
+
+const fs = require("fs");
+
+const getPort = () => {
+    try {
+        const str = fs.readFileSync("config.json");
+        const config = JSON.parse(str);
+        return config.port;
+    } catch (e) {
+        return 3000;
+    }
+};
+
+const tryCatch = f => {
+    try {
+        return Right(f());
+    } catch (e) {
+        return Left(e);
+    }
+};
+
+// Force users to not be able to directly do fs.readFileSync
+const readFileSync = path => tryCatch(() => fs.readFileSync(path));
+
+const getPortEither = () =>
+    // tryCatch(() => fs.readFileSync(path)) or better yet, ensure try catch is handled
+    readFileSync("config.json")
+        .map(contents => JSON.parse(contents))
+        .map(config => config.port)
+        .fold(
+            () => 3000,
+            x => x
+        );
+
+result = getPortEither();
+console.log(result); // 3000 since we don't have the file, but we also didn't blow up and handled the error cleanly
