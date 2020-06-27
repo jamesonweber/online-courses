@@ -90,3 +90,18 @@ const getPortEither = () =>
 
 result = getPortEither();
 console.log(result); // 3000 since we don't have the file, but we also didn't blow up and handled the error cleanly
+
+// since parseJson can also throw and exception, we should try catch that as well
+const parseJson = str => tryCatch(() => JSON.parse(str));
+
+const getPortEitherFlattened = () =>
+    readFileSync("config.json")
+        .chain(parseJson)
+        .map(config => config.port)
+        .fold(
+            () => 3000,
+            x => x
+        );
+
+result = getPortEitherFlattened();
+console.log(result); // 3000 still, be we also flattened either with the two tryCatches
