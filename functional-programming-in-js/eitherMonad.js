@@ -79,6 +79,7 @@ const readFileSync = path => tryCatch(() => fs.readFileSync(path));
 
 const getPortEither = () =>
     // tryCatch(() => fs.readFileSync(path)) or better yet, ensure try catch is handled
+    // whenever we do file reads with a new file reading function
     readFileSync("config.json")
         .map(contents => JSON.parse(contents))
         .map(config => config.port)
