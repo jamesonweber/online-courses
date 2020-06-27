@@ -80,3 +80,6 @@ Composing is associative (meaning we can move the parentheses around). And we wi
 Note: For left to right evaluation, look into `pipe`. It will do `(f, g) => x => g(f(x))`
 
 The goal is to create pipelines where we pass in an input and there are functions applied to it into a pipeline of data processing.
+
+### Functors
+See functors.js for notes with examples on the identity functor.
