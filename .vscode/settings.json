@@ -1,14 +1,16 @@
 {
     "cSpell.words": [
-        "Microservices",
         "AEIOU",
+        "codepen",
         "Communative",
         "Functors",
-        "Semigroups",
-        "codepen",
+        "Microservices",
         "monoid",
         "monoids",
+        "Nessie",
         "semigroup",
+        "Semigroups",
+        "swappable",
         "uncurry"
     ]
 }
