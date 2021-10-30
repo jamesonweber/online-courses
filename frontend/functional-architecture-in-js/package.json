@@ -1,14 +1,16 @@
 {
-  "name": "frontend-masters",
-  "version": "1.0.0",
-  "description": "Notes and exercises for courses from frontend masters",
-  "repository": "https://github.com/jamesonweber/frontend-masters.git",
-  "author": "Jameson Weber <jameson.j.weber@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "immutable": "^4.0.0-rc.12",
-    "immutable-ext": "^1.1.5",
-    "ramda": "^0.27.0"
-  }
+    "name": "frontend-masters",
+    "version": "1.0.0",
+    "description": "Notes and exercises for courses from frontend masters",
+    "repository": "https://github.com/jamesonweber/frontend-masters.git",
+    "author": "Jameson Weber <jameson.j.weber@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "daggy": "^1.4.0",
+        "immutable": "^4.0.0-rc.12",
+        "immutable-ext": "^1.1.5",
+        "lodash": "^4.17.15",
+        "ramda": "^0.26.1"
+    }
 }
