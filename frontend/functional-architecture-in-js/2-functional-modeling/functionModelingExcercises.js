@@ -1,3 +1,5 @@
+// https://codepen.io/drboolean/pen/qeqpgB?editors=0010
+
 // Definitions
 const Endo = run =>
 ({

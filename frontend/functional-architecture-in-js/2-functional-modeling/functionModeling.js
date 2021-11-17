@@ -62,11 +62,12 @@ console.log(res)
 // (acc, a) -> acc
 const Reducer = run => ({
     run,
-    contramap: f => Reducer((acc, x) => run(acc, f(x)))
+    contramap: f => Reducer((acc, x) => run(acc, f(x))),
+    concat: other => Reducer((acc, x) => other.run(run(acc, x), x))
 })
 
 // Ex)
-// Reducer(login.contramap(payload => payload.user))
-// .concat(Reducer(changePage).contramap(payload => payload.currentPage))
-// .run(state, {user: {}, currentPage: {}})
+Reducer(login.contramap(payload => payload.user))
+.concat(Reducer(changePage).contramap(payload => payload.currentPage))
+.run(state, {user: {}, currentPage: {}})
 
