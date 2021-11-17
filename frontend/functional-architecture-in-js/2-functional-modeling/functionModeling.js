@@ -1,4 +1,4 @@
-const { Either } = require("../types")
+const { List } = require('immutable-ext')
 
 const toUpper = x => x.toUpperCase();
 const exclaim = x => x.concat("!")
@@ -37,3 +37,36 @@ console.log(res.run({ port: 3000 }))
 // Remarks: This is the "Reader" monad and can be used to chain execution.
 // It is neat because it basically creates dependency injection without needing a framework.
 // We can "ask" to resolve anything in our run config at any point. So in our case, we could have a db connection, web config, verbiage, etc.
+
+
+// The endo functor
+
+// only works for functions with the same type of input as the output
+// a => a
+// String -> String
+
+// Note how map does not exist here because we cannot map to a new type. The return must be the same
+const Endo = run => ({
+    run,
+    concat: other => Endo(x => other.run(run(x)))
+})
+Endo.empty = () => Endo(x => x)
+
+res = List([toUpper, exclaim]).foldMap(Endo, Endo.empty()).run('hello endo') // HELLO ENDO!
+console.log(res)
+
+// contramap
+// Allows you to change arguments before it arrives at a function.
+// Unlike map which you change the output after a function
+
+// (acc, a) -> acc
+const Reducer = run => ({
+    run,
+    contramap: f => Reducer((acc, x) => run(acc, f(x)))
+})
+
+// Ex)
+// Reducer(login.contramap(payload => payload.user))
+// .concat(Reducer(changePage).contramap(payload => payload.currentPage))
+// .run(state, {user: {}, currentPage: {}})
+
