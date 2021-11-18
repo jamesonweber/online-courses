@@ -55,3 +55,8 @@ Intersection is a semigroup since we can create concat for it, but it is not a m
 
 ### Functors
 Functors are generic types which map from on category to another
+
+### Free Monads
+A monad which allows us to treat functions like data types.
+
+Essentially we build an AST of functions which an interpreter will then interpret and run.
