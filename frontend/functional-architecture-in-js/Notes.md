@@ -60,3 +60,8 @@ Functors are generic types which map from on category to another
 A monad which allows us to treat functions like data types.
 
 Essentially we build an AST of functions which an interpreter will then interpret and run.
+
+### Lenses
+Are built on functors. The are used to compose traversing properties of objects and functors to view or modify the data in an immutable way.
+
+Think about it like immutable getters and setters.
