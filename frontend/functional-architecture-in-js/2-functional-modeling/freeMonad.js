@@ -16,6 +16,7 @@ const app = () =>
 // Interpreter that will run the AST
 const interpret = x =>
   // cata is short for catamorphism (pattern matching on the type)
+  // See https://wiki.haskell.org/Catamorphisms
   x.cata({
     Get: url => Id.of(`contents for ${url}`),
     Post: (url, body) => Id.of(`posted ${body} to ${url}`)
